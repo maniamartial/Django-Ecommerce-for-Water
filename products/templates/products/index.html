@@ -1,0 +1,276 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wode</title>
+   
+<!-- Bootstrap CSS -------------------------------------------------------------------------------------------------------------------->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!------------------------------------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,700&display=swap"
+        rel="stylesheet">
+    <!------------------------------------------------------------------------------------------------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" rel="stylesheet">
+    <!------------------------------------------------------------------------------------------------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@0;1&family=Merienda:wght@400;700&display=swap"
+        rel="stylesheet">
+
+        <!--==========================================================================================-->
+  
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesom">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    
+        <!--==========================================================================================-->
+    <!---------------------------------->
+<link rel="stylesheet" href="{% static 'css/landingpage.css'%}">
+</head>
+
+
+<body>
+
+    <section class="main-landing">
+       <video autoplay muted loop id="myVideo">
+            <source src="images/rain.mp4" type="video/mp4">
+        </video> 
+
+        <!--New developments-->
+        <div class="wrap-sections center">
+            <div class="two-long-section center ">
+                <div class="section-one long-section-wrap">
+<div class="center-section">
+    <marque scrollamount="20">
+        <h1><a href="waters">Wode</a> </h1>
+    </marque>
+    
+    <!--<button id="display-menu-button">
+        <div class="hidden-menu" id="hidden-menu">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <img class="logo3" src="{% static 'images/logo3.png' %}" alt="P">
+        </div>
+
+    </button>-->
+<style>
+    .logo{
+        width: 200px;
+        height: 100px;
+    }
+</style>
+
+    <!-----------------------------------------------------------------------------------------------------------------------------------Implementing the search bar-->
+    <form class="form-inline my-2 my-lg-0  submission-form" method="POST" action="{%url 'search'%}">
+        {%csrf_token%}
+        <div class="input-group mb-3">
+            <input type="search" name="q" class="form-control" placeholder="Search">
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text" id="basic-addon2"
+                    style="background-color: gold;">Search</button>
+            </div>
+        </div>
+    </form>
+    <!------------------------------------------------------End of search-->
+
+    <div>
+        <ul class="menus">
+            <!--------------------------------------------------------------------------------------------------------Authentication of the user-->
+            {%if user.is_authenticated %}
+            <li>
+                <a href="{% url 'profile'%}">Hi, {{user.username}}</a>
+            </li>
+<li>
+    <a href="{% url 'logout'%}">Logout</a>
+</li>
+
+
+            {%else%}
+<li>
+    <a href="{% url 'login'%}">Login</a>
+</li>
+
+<li>
+    <a href="{% url 'register'%}">Register</a>
+</li>
+            {%endif%}
+          <!-----------------------------------------------------------------------------------------------------------------------------End of authentication-->
+            <li>
+                <a href="{% url 'about_us'%}">About us</a>
+            </li>
+            <li>
+                <a href="{% url 'help'%}">Help</a>
+            </li>
+        </ul>
+
+        <div class="bottom-corner">
+<a class="btn btn-block waves-effect waves-light"  href="{%url 'mywater'%}">
+    My Water
+</a>
+        </div>
+    </div>
+   
+
+    <style>
+        .waves-effect{
+            background-color: gold;
+        }
+        .bottom-corner{
+            margin-left: -2%;
+            width: 15%;
+   
+           position: absolute;
+    bottom: 0;
+    margin-bottom: 100px;
+    height: 100px;
+ 
+        }
+        @media(max-width:1024px){
+             .bottom-corner{
+            margin-left: -7%;
+            width: 35%;
+        
+           position: absolute;
+    bottom: 0;
+    margin-bottom: 100px;
+ 
+        }
+        }
+        .form-inline{
+            margin-left: -50px;
+            width: 190%;
+       
+        }
+          @media(max-width:540px){
+              .form-inline{
+                  margin-left: -30px;
+                  width: 200px;
+              }
+          }
+          @media(max-width:411px){
+              .form-inline{
+                  width: 150px;
+              }
+          }
+    </style>
+
+</div>
+                </div>
+                <!-----------------------------------------------------------------Body design on the right-->
+                <div class="section-two long-section-wrap">
+                  
+                    <div class="first-category category">
+                        <a href="{% url 'waters'%}">
+                            <div class="north-section">
+                                <h2>Water</h2>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="third-category category">
+                    <a href="{% url 'products'%}">
+                            <div class="west-section">
+                                <h2>Water<br /> Products</h2>
+                                </h2>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="second-category category">
+<a href="{% url 'service'%}">
+    <div class="east-section">
+        <h2>Water<br /> Service</h2>
+    </div>
+</a>
+</div>
+
+
+
+<div class="third-category category">
+<a href="{% url 'fun'%}">
+    <div class="south-section">
+        <h2>Water fun<br /> and games</h2>
+    </div>
+</a>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="hide-large">
+        <nav class="mobile-bottom-nav hide-large">
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                <div class="mobile-bottom-nav__item-content">
+                    <a class="nav-link" href="{% url 'home'%}"><i class="fa-size fa fa-home nav-ico fa-2x" aria-hidden="true"></i>
+                        <div>Home</div>
+                    </a>
+                </div>
+            </div>
+            <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <a class="nav-link" href="{% url 'about_us'%}"><i class="fa fa-picture-o nav-ico fa-2x" aria-hidden="true"></i>
+                        <div>Cart</div><span class="sr-only">(current)</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <a class="nav-link" href="{% url 'about_us'%}"><i class="fa-size fa fa-info-circle nav-ico fa-2x"
+                            aria-hidden="true"></i>
+                        <div>About_Us</div> <span class="sr-only">(current)</span>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <a class="nav-link"href="{% url 'profile'%}" href="contact_us.html"><i class="fa fa-support fa-pin nav-ico fa-2x"></i>
+                        <div>Account</div><span class="sr-only">(current)</span>
+                    </a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+<style>
+    a i {
+  color: gold;
+
+}
+</style>
+
+<!--Bootstrap javascript-->
+<!-- jQuery first, --------------------------------------------------------------------------------------->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<!---------------- Popper.js,------------------------------------------------------------------------------------------------------------------------------------>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<!----------------- then Bootstrap JS---------------------------------------------------------------------------------------------------------------------------------->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+    <!-------------------------------Script-->
+    <script src="{% static 'main.js' %}"></script>
+    
+</body>
+
+</html>

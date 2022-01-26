@@ -1,0 +1,73 @@
+{%extends 'products/base.html'%}
+{%block content%}
+<section class="main-section" style="background-image: url(images/waterrocks.jfif)">
+    <!-----------------------------------------------------------------------------------------------------Drop down menu to select items-->
+    
+    <!-------------------------------------------------------------------------------------------------------------------------------------End of drop down select-->
+    <main>
+        <section class="body-section">
+
+            <div class="all-products">
+                <!----------------------------------------------------------------------------------------------Choosing categorise from database-->
+              
+                <section class="main-products cooler">
+                    <div class="upper-bar">
+                        <div>
+                            <h2>All Products</h2>
+                        </div>
+                        <div class="sortby">
+                            <span>Sort By: <select class="sort">
+                                    <option value="highest">Highest Price</option>
+                                    <option value="lowest">Lowest Price</option>
+                                </select></span>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <!-------------------------------------------------------------------------------------------------------Products-wraps-->
+                    <div class="specific-product-wrap specific-product-wrap-cooler">
+
+                        {% for product in allproducts %}
+                        <a href="{%url 'product' product.pk%}">
+                            <div class="specific-single-product">
+                                <div class="product-image center">
+                                    <img class="product-image-shape" src="{{product.image.url}}"
+                                        alt="adamol Distilled" />
+                                </div>
+                                <div class="produc-descriptions">
+                                    <h4 class="specific-product-title">{{product.title}}</h4>
+                                    <p class="one-line-description"></p>
+                                    <div class="price">Ksh.{{product.price}}</div>
+                        </a>
+                        <button data-product="{{product.id}}" data-action="add" class="AddToCart update-cart" id="addToCart update-cart">Add To Cart</button>
+                    </div>
+            </div>
+
+            {% empty %}
+            <p>No Product Lol</p>
+
+            {%endfor%}
+            </div>
+        </section><br />
+      
+        <!--------------------------------------------------------------------------------End of Products-->
+
+        <!--------------------------------------------------------------------------------------Pagination-->
+        {%if categories.has_other_pages%}
+
+        {% if categories.has_previous %}
+        <a class="btn btn-light mb-4 btn-lg" href="?page=1">First</a>
+        <a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.previous_page_number }}">Previous</a>
+        {% endif %}
+        {% if categories.has_next %}
+        <a class="btn btn-light mb-4 btn-lg" href="?page={{categories.next_page_number}}">Next</a>
+        <a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.paginator.num_pages }}">Last</a>
+        {% endif %}
+
+
+        {% endif %}
+        <!-----------------------------------------------------------------------------------------End of Pagination-->
+    </main>
+</section>
+{%endblock content %}

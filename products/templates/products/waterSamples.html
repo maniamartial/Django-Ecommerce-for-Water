@@ -1,0 +1,110 @@
+{% extends 'products/base.html' %}
+{% block content %}
+{%load static%}
+   <section class="main-section" >
+       <!------------------------------------------------------------------------------Drop down select items to show on teh page-->
+    <main >
+
+        <!--Sliders-->
+        <div id="slider" class="slider">
+            <div class="slider-content">
+                <div class="slider-content-wrapper">
+                    <div class="slider-content__item image-1"><img class="slider-image"
+                            src="{% static 'images/distilled_water_sliders.jfif' %}" alt="P"><h3 class="inside-slider" style="color: black;">Distilled Water</h3></div>
+                    <div class="slider-content__item image-2"><img class="slider-image"
+                            src="{% static 'images/borehole_water_sliders.jfif' %}" alt="P"><h3 class="inside-slider" style="color: black;">BoreHole Water</h3></div>
+                    <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/clearwater.jfif' %}"
+                            alt="P"> <h3 class="inside-slider" style="color: black;">Clean Water</h3></div>
+                    <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/purified_sliders.jfif' %}"
+                            alt="P"><h3 class="inside-slider"style="color: black;">Purified Water</h3></div>
+                    <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/sparkling_sliders.jfif' %}"
+                            alt="P"><h3 class="inside-slider" style="color: black;">Sparkling Water</h3></div>
+                    <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/spring_sliders.jfif' %}"
+                            alt="P"><h3 class="inside-slider" style="color: white;">Spring Water</h3></div>
+                            <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/Alkaline_sliders.jfif' %}"
+                                    alt="P"><h3 class="inside-slider" style="color: white;">Alkaline</h3></div>
+                                    <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/tap_water_sliders.jfif' %}"
+                                            alt="P"><h3 class="inside-slider" style="color: black;">Water Tap</h3></div>
+                                            <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/mineral_sliders.jfif' %}"
+                                                    alt="P"><h3 class="inside-slider" style="color: black;">Mineral Waters</h3></div>
+                                                    <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/water_ATM_sliders.jfif' %}"
+                                                            alt="P"><h3 class="inside-slider" style="color: black;">ATM Waters</h3></div>
+                                                            <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/dispenser_water_sliders.jfif' %}"
+                                                                    alt="P"><h3 class="inside-slider" style="color: white;">Dispenser Water</h3></div>
+                                                                   
+                </div>
+            </div>
+        </div>
+        <!--Sliders-->
+        <section class="body-section">
+            <!-------------------------------------------------------------------------------------------Categories-->
+{%for category in categories%}
+<section class="main-products cooler">
+    <div class="upper-bar">
+        <div>
+            <h2>{{category.name}}</h2>
+        </div>
+            <!--  <div class="sortby">
+                                        <span>Sort By: <select class="sort">
+                                                <option value="highest">Highest Price</option>
+                                                <option value="lowest">Lowest Price</option>
+                                            </select></span>
+                                    </div>-->
+    </div>
+
+    <hr />
+
+    <!-------------------------------------------------------------------------------------------------------Specific products in single category Products-wrap-->
+    <div class="specific-product-wrap specific-product-wrap-cooler">
+
+        {% for product in category.product_set.all %}
+        <a href="{%url 'product' product.pk%}">
+            <div class="specific-single-product">
+                <div class="product-image center">
+                    <img class="product-image-shape" src="{{product.image.url}}" alt="adamol Distilled" />
+                </div>
+                <div class="produc-descriptions">
+                    <h4 class="specific-product-title">{{product.title}}</h4>
+                    <p class="one-line-description"></p>
+                    <div class="price">Ksh.{{product.price}}</div></a>
+                <button data-product="{{product.id}}" data-action="add" class="AddToCart update-cart" id="addToCart update-cart">Add To
+                    Cart</button>
+  
+                </div>
+            </div>`
+       
+        {% empty %}
+        <p>No Product Lol</p>
+
+        {%endfor%}
+    </div>
+</section>
+{%endfor%}
+<!--------------------------------------------End of showing products-->
+            <br/>
+            
+        
+        
+            <!--------------------------------------------------------------------------------------------------------------------Pagination-->
+            <div class="container-last" style="background-color: red;">
+        {%if categories.has_other_pages%}
+            
+            {% if categories.has_previous %}
+            <a class="btn btn-light mb-4 btn-lg" href="?page=1">First</a>
+            <a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.previous_page_number }}">Previous</a>
+            {% endif %}
+            {% if categories.has_next %}
+            <a class="btn btn-light mb-4 btn-lg" href="?page={{categories.next_page_number}}">Next</a>
+            <a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.paginator.num_pages }}">Last</a>
+            {% endif %}
+            
+            
+            {% endif %}
+            </div>
+            <!----------------------------------End of Pagination-->
+            </section>
+</main>
+</section>
+        
+
+{%endblock content %}

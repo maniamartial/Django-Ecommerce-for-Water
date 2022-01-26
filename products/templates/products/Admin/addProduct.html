@@ -1,0 +1,25 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<main style="background-color: white;">
+    <h1>Add Product</h1>
+ <div class="container">
+    <form method="POST" action="" enctype="multipart/form-data">
+         {%csrf_token%}
+         {{form.as_p}}
+         <input type="submit" value="Add Product" class="btn btn-lg btn-primary" name="Add Product">
+     </form>
+ </div>
+</main>
+
+<style>
+    main input{
+        color: red;
+        font-size: 20px;
+    }
+    .btn-primary{
+        margin-left: 50%;
+        margin-right: auto;
+    }
+</style>
+{% endblock content %}

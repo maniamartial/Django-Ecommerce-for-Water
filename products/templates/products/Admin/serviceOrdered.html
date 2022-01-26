@@ -1,0 +1,219 @@
+{% extends 'products/base.html' %}
+ {% block content %}
+  {%load static%}
+  <div class="container">
+    
+    <h3 class="center">Househelp orders</h3>
+<table>
+   
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Location</th>
+            <th>Number</th>
+            <th>Description</th>
+            <th>Fee</th>
+            <th>Date Ordered</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for househelp in househelps%}
+        <tr>
+            <td data-column="Name">{{househelp.order.customer}}</td>
+            <td data-column="location">{{househelp.location}}</td>
+            <td data-column="">{{househelp.number}}</td>
+            <td data-column="Twitter">{{househelp.description}}</td>
+            <td data-column="location">{{househelp.fee}}</td>
+            <td data-column="date">{{househelp.date_ordered}}</td>
+        </tr>
+        {%endfor%}
+       
+    </tbody>
+</table>
+</div>
+<hr>
+<!--Cleaning services-->
+<div class="container">
+
+    <h3 class="center">Cleaning Orders</h3>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Location</th>
+                <th>Number</th>
+                <th>Time Frame</th>
+                <th>Description</th>
+                <th>Fee</th>
+                <th>Date Ordered</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for cleaners in cleanings%}
+            <tr>
+                <td data-column="Name">{{cleaners.order.customer}}</td>
+                <td data-column="location">{{cleaners.location}}</td>
+                <td data-column="">{{cleaners.number}}</td>
+                <td data-column>{{cleaners.time}}</td>
+                <td data-column="Twitter">{{cleaners.description}}</td>
+                <td data-column="location">{{cleaners.fee}}</td>
+                <td data-column="date">{{cleaners.date_ordered}}</td>
+            </tr>
+            {%endfor%}
+      
+
+        </tbody>
+    </table>
+</div>
+<hr>
+<!--PLumbing Services-->
+<div class="container">
+
+    <h3 class="center">Plumbing orders</h3>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Location</th>
+                <th>Description</th>
+                <th>Time Frame</th>
+                <th>Fee</th>
+                <th>Date Ordered</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for plumbing in plumbings%}
+            <tr>
+                <td data-column="Name">{{plumbing.order.customer}}</td>
+                <td data-column="location">{{plumbing.location}}</td>
+               
+                <td data-column="Twitter">{{plumbing.description}}</td>
+                <td data-column="">{{plumbing.time}}</td>
+                <td data-column="location">{{plumbing.fee}}</td>
+                <td data-column="date">{{plumbing.date_ordered}}</td>
+            </tr>
+            {%endfor%}
+         
+
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<!---Construction-->
+<div class="container">
+
+    <h3 class="center">Construction Orders</h3>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Number</th>
+                <th>Fee</th>
+                <th>Date Ordered</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for construction in constructions%}
+            <tr>
+                <td data-column="Name">{{construction.order.customer}}</td>
+                <td data-column="location">{{construction.location}}</td>
+                <td data-column="">{{construction.specification_service}}</td>
+                <td data-column="size">{{construction.size}}</td>
+                <td data-column="">{{construction.number}}</td>
+                <td data-column="location">{{construction.fee}}</td>
+                <td data-column="date">{{construction.date_ordered}}</td>
+            </tr>
+            {%endfor%}
+          
+
+        </tbody>
+    </table>
+</div>
+<!---->
+<style>
+    table { 
+	width: 750px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #eee; 
+	}
+
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table { 
+	  	width: 100%; 
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+	}
+
+}
+</style>
+{%endblock content%}

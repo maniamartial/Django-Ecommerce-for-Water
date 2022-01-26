@@ -1,0 +1,98 @@
+
+
+{% extends 'users/userbase.html' %}
+
+{% block content %}
+<section class="signup" style="background-image: url(images/Rock.jfif)">
+    <div class="center">
+        <form method="POST" action="">
+            {%csrf_token%}
+            <table>
+                <tr>
+                    <td style="width: 33.33%;">
+                        <div class="dash"></div>
+                    </td>
+                    <td style="padding: 0 6px;">
+                        <h1>Address</h1>
+                    </td>
+                    <td style="width: 33.33%;">
+                        <div class="dash"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <p>Add Your Address. It's free and only takes a minute.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            {{form.f_name}}
+                         
+                        </div>
+                    </td>
+                </tr>
+    <tr>
+        <td colspan="3">
+            <div>
+                {{form.l_name}}
+            </div>
+        </td>
+    </tr>
+              
+            <tr>
+                <td colspan="3">
+                    <div>
+                        {{form.address_1}}
+                    </div>
+                </td>
+            </tr>
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            {{form.address_2}}
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">
+                        <div>
+   {{form.city}}
+                        </div>
+
+                    </td>
+                </tr>
+<tr>
+    <td colspan="3">
+        <div>
+            {{form.phone}}
+        </div>
+    </td>
+</tr>
+        <tr>
+            <td colspan="3">
+                <div>
+                    <input type="submit" name="Submit">
+                </div>
+            </td>
+        </tr>
+            </table>
+        </form>
+        <script>
+//Filling the inputs with visible placeholders
+var fiields_name=document.getElementsByTagName('input');
+fiields_name[1].placeholder='FirstName';
+fiields_name[2].placeholder='Lastname'
+    fiields_name[3].placeholder = 'Adddress_1'
+    fiields_name[4].placeholder = 'Address_2'
+    fiields_name[5].placeholder = 'City'
+    fiields_name[6].placeholder = 'PhoneNumber'
+
+    for(field in fiields_name){
+        fiields_name[field].className += 'form-control'
+    }
+</script>
+
+</section>
+{% endblock content%}

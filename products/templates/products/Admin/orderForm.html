@@ -1,0 +1,18 @@
+{%extends 'products/base.html'%} {%block content%}
+
+<div class="row" style="min-height: 600px">
+  <div class="col-md-6">
+    <div class="card card-body">
+      <form action="" method="POST">
+        {%csrf_token%} {{form}}
+        <input
+          type="submit"
+          class="btn btn-outline-info btn-block"
+          value="Submit"
+          name="Submit"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock content%}

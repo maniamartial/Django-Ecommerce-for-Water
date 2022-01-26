@@ -1,0 +1,58 @@
+{% extends 'users/userbase.html' %}
+{% block content %}
+    <section class="signup " style="background-image: url('/static/images/Rock.jfif')">
+        <div class="center">
+            <!--------------------------------------------------------------------------Login form-->
+            <form method="POST" action="">
+                {%csrf_token%}
+            <table class="login-table">
+         
+                   
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            <input type="text" placeholder="Username" name='username'>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            <input placeholder="Password" type="password" name="password">
+                        </div>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td colspan="3">
+                      <div class="remember-forgotten">
+                             <span><input type="checkbox">Remember me  <a class="forgotten" href="{% url 'password_reset' %}">Forgotten password</a></span>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="remember-forgotten">
+                           {%for message in messages%}
+                           <p>{{message}}</p>
+                           {%endfor%}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            <input class="loginbutton" type="submit" value="Login" style="background-color: lightblue;">
+                        </div>
+                        <p>Already have an account? <a href="{% url 'register'%}">Sign in</a></p>
+                    </td>
+                </tr>
+
+            </table>
+            </form>
+<!------------------------------------------login form-->
+
+
+    </section>
+
+  {% endblock content%}

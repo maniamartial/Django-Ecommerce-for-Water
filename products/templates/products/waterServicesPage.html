@@ -1,0 +1,216 @@
+{% extends 'products/base.html' %}
+{% block content %}
+{%load static%}
+<section class="main-section">
+ 
+    <!--Sliders-->
+    <div id="slider" class="slider">
+        <div class="slider-content">
+            <div class="slider-content-wrapper">
+            <div class="slider-content__item image-1"><img class="slider-image"
+                    src="{% static 'images/distilled_water_sliders.jfif' %}" alt="P">
+                <h3 class="inside-slider" style="color: black;">Cleaning Services</h3>
+            </div>
+            <div class="slider-content__item image-2"><img class="slider-image"
+                    src="{% static 'images/borehole_water_sliders.jfif' %}" alt="P">
+                <h3 class="inside-slider" style="color: black;">Plumbing Services</h3>
+            </div>
+            <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/clearwater.jfif' %}" alt="P">
+                <h3 class="inside-slider" style="color: black;">House Maids</h3>
+            </div>
+            <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/purified_sliders.jfif' %}"
+                    alt="P">
+                <h3 class="inside-slider" style="color: black;">Purified Water</h3>
+            </div>
+             
+            </div>
+        </div>
+    </div>
+    <!--Sliders-->
+    <main >
+        <section class="body-section">
+
+            <!--Cleaning services-->
+            {%for category in categories%}
+            <section class="main-products cooler">
+                <div class="upper-bar">
+                    <div>
+                        <h2>{{category.name}}</h2>
+                    </div>
+                    <!--  <div class="sortby">
+                                                <span>Sort By: <select class="sort">
+                                                        <option value="highest">Highest Price</option>
+                                                        <option value="lowest">Lowest Price</option>
+                                                    </select></span>
+                                            </div>-->
+                </div>
+            
+                <hr />
+            
+                <!--Single Products-wrap-->
+                <div class="specific-product-wrap specific-product-wrap-cooler">
+            
+                    {% for product in category.product_set.all %}
+                    <a href="{%url 'product' product.pk%}">
+                        <div class="specific-single-product">
+                            <div class="product-image center">
+                                <img class="product-image-shape" src="{{product.image.url}}" alt="adamol Distilled" />
+                            </div>
+                            <div class="produc-descriptions">
+                                <h4 class="specific-product-title">{{product.title}}</h4>
+                                <p class="one-line-description"></p>
+                                <div class="price">Ksh.{{product.price}}</div></a>
+                                <button data-product="{{product.id}}" data-action="add" class="AddToCart update-cart" id="addToCart update-cart">Add To
+                                    Cart</button>
+                            </div>
+                        </div>`
+                  
+                    {% empty %}
+                    <p>No Product Lol</p>
+            
+                    {%endfor%}
+                </div>
+            </section>
+            {%endfor%}
+                <!--End-->
+                <br/>
+        </section>
+<!--------------------------------------------------------------------------------------------------------------------------------Pagination-->
+{%if categories.has_other_pages%}
+<div class="container-last">
+{% if categories.has_previous %}
+
+<a class="btn btn-light mb-4 btn-lg" href="?page=1">First</a>
+<a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.previous_page_number }}">Previous</a>
+{% endif %}
+{% if categories.has_next %}
+<a class="btn btn-light mb-4 btn-lg" href="?page={{categories.next_page_number}}">Next</a>
+<a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.paginator.num_pages }}">Last</a>
+{% endif %}
+</div>
+
+{% endif %}
+    </main>
+
+</section>
+<!--------------------------------------------------------------------------------------------------------------------------------End of Pagination-->
+
+
+    <div class="center" id="payment-wrap-services">
+	<button class="close-payments" id="close-payments">X</button>
+	<div class="wrap-gallery payment-wrap  payment-wrap-services p-l-25 p-r-25 " >
+	
+		
+		<div class="isotope-item bo-rad-10 hov-img-zoom events guests black " >
+			<a href="#">
+				<div class="payment center" >
+					<div class="hourpayments">
+						<h2 class="payment-head">Daily </h2>
+						<p>Enjoy your Day<br></p>
+						<div class="money">Ksh.150</div>
+						<button class="button-plan plan">CHECK OUT</button>
+					</div>
+				</div>
+			</a>
+		</div>
+	
+		
+		<div class="isotope-item bo-rad-10 hov-img-zoom food white">
+			<a href ="#">
+				<div class="payment  center" >
+					<div class="hourpayments">
+						<h2 class="payment-head">WEEKLY</h2>
+						<p>Enjoy your Week<br></p>
+						<div class="money">Ksh.1000</div>
+						<button class="button-plan plan">CHECK OUT</button>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+	
+		
+		<div class=" isotope-item black  bo-rad-10 hov-img-zoom events" >
+			<a href = "#">
+				<div class="payment center" >
+					<div class="hourpayments">
+						<h2 class="payment-head">MONTHLY</h2>
+						<p>Enjoy your Day<br></p>
+							<div class="money">Ksh.2000</div>
+						<button class="button-plan plan">CHECK OUT</button>
+					</div>
+				</div>
+			</a>
+		</div>	
+		
+		
+		<div class="isotope-item bo-rad-10 hov-img-zoom events white ">
+			<a href = "#">
+				<div class="payment center" >
+					<div class="hourpayments">
+						<h2 class="payment-head">ANNUALLY</h2>
+						<p>Enjoy your Day<br></p>
+						<div class="money">Ksh.20,000</div>
+						<button class="button-plan plan">CHECK OUT</button>
+					</div>
+				</div>
+			</a>
+		</div>	
+	</div>
+</div>
+<style>
+.payment-box {
+height: 500px;
+width: 350px;
+border: 2px red solid;
+border-radius: 5px;
+padding: 5px;
+background-color: rgb(252, 249, 249);
+color: black;
+}
+.payment-box .pay {
+background-color: black;
+color: white;
+}
+.payment-box h2 {
+font-family: Georgia, "Times New Roman", Times, serif;
+margin-top: 100px;
+}
+.payment-box:hover {
+transition: all 2s ease-out;
+transition-duration: 3s;
+border: none;
+border-radius: 8px;
+transition-delay: 2s;
+}
+.button-plan {
+width: 70%;
+height: 50px;
+background-color: rgb(34, 30, 30);
+color: white;
+font-size: 25px;
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+border-radius: 5px;
+margin-top: 30px;
+}
+.button-plan:hover {
+background-color: blue;
+transition: all 2s ease-in-out;
+}
+</style>
+ 
+<!--
+       <main class="center">
+        <li>
+            <select name="latest" class="filters">
+                <option>All_Services</option>
+                <option>Cleaning_Services</option>
+                <option>Plumbing</option>
+                <option>Housemaids</option>
+        
+        
+            </select>
+        </li>
+    </main>
+-->
+{%endblock content %}

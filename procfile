@@ -1,0 +1,1 @@
+web: gunicorn UmojaWater.wsgi --log-file -

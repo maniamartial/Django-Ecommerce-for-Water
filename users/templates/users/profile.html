@@ -1,0 +1,66 @@
+{% extends 'users/userbase.html' %}
+{%block content%}
+<tr>
+    <td colspan="3">
+        <div class="remember-forgotten">
+            {%for message in messages%}
+            <p>{{message}}</p>
+            {%endfor%}
+        </div>
+    </td>
+</tr>
+
+<div class="content-section center">
+<div class="content-wrap center">
+    <h3 class="center">Account overview</h3>
+    <hr>
+    <div class="two  center">
+    <div class="details center">
+    <h5>Account Information</h5>
+    <hr>
+        <div class="useremail center">
+            <p class="username">{{user.username}}</p>
+            <p class="email">{{user.email}}</p>
+            <div class="change Username">
+                <hr/>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <h5>Update the username</h5>
+                <div class="username">
+                    
+                              {{u_form.username}}
+                          
+                </div>
+                <button class="btn btn-outline-info" type="submit">Update</button>
+             
+                </form>
+
+            </div>
+            <form action="" method="POST">
+                {%csrf_token%}
+            
+                <input class="btn btn-danger" type="submit" value='Delete Account' name='Submit'>
+            </form>
+        </div>
+    </div>
+    <div class="details">
+       
+        <h5><a href="{%url 'address'%}">Address book</a></h5>
+        <hr>
+        <div>
+            <h5>{{ShippingAddress.firstname}}+{{user.l_name}}</h5>
+            <p>{{ShippingAddress.address}}<br>
+            {{shipping.city}}<br/>
+        {{shipping.phone}}</p>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+<style>
+  .two{
+      display: flex;
+  }
+</style>
+
+{% endblock content%}

@@ -1,0 +1,61 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+    <main style="background-image: url(images/waterrocks.jfif)">
+   <section class="single-product-page body-section">
+
+    <!---------------------------------------------------------------Displaying each-Product -->
+    <div class="sproduct-position" > 
+     
+
+        <div class="sproduct">
+            <div class="wrap-single-product-s">
+                <a class="btn btn-back" href="{%url 'modifyAllProduct'%}">&lt;&lt;</a>
+                <div class="image-s">
+<img class="product-image-s" src="{{eachProduct.image.url}}"></img>
+                </div>
+               <div class="details">
+<h4 class="libhead">{{eachProduct.title}}</h4>
+
+<div class="price" id="book-price">Ksh.{{eachProduct.price}}</div>
+<div class="price" id="book-price">{{eachProduct.created_at}}</div>
+<p>{{eachProduct.description}}</p>
+<div class="wrap-book-buttons">
+    <a class="btn btn-lg btn-danger"  href="{% url 'deleteProduct' eachProduct.pk%}" >Delete</a>
+<a class="btn btn-lg btn-primary"  href="{% url 'updateProduct' eachProduct.pk%}">Update</a>
+</div>
+               </div>
+        </div>
+        <!-- --------------------------------------------------------------------------------------Descripton of single product-->
+
+        <div class="more-detail-s">
+            <h4>Product Details</h4>
+            <hr>
+            <p>{{eachProduct.description}}</p>
+        </div>
+        <div class="rating-box">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-empty"></i>
+        </div>
+        <div class="specification">
+            <h4>Specifications</h4><hr>
+            <div class="spec"><i>Production Company:  </i>USA</div>
+                <div class="spec"><i>Materials:     </i>Polyviny</div>
+                    <div class="spec"><i>Weight:   </i>2kg</div>
+                        <div class="spec"><i>ShopType :  </i>Wode</div>
+                    <div class="spec"><i>Production Company:  </i>USA</div>
+        </div>
+        </div>
+
+        <!------------------------------------------------------------------------------------------------left-bar more details like location, warrants-->
+     
+        <!------------------------------End of left-bar-->
+       </div>
+    
+   </section>
+</main>
+
+{% endblock content %}

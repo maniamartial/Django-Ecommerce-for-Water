@@ -1,0 +1,141 @@
+{%extends 'products/base.html'%}
+{%block content%}
+{%load static%}
+<section class="main-section" >
+
+    <!---------------------style="background-image: url(images/waterrocks.jfif)"--------------------------------------------------------------------------------Drop down menu to select items-->
+
+
+    <!--Sliders-->
+    <div id="slider" class="slider">
+        <div class="slider-content">
+            <div class="slider-content-wrapper">
+                <div class="slider-content__item image-1"><img class="slider-image"
+                        src="{% static 'images/floodlights_sliders.jfif' %}" alt="P"><h3 class="inside-slider">Floodlights</h3></div>
+                <div class="slider-content__item image-2"><img class="slider-image"
+                        src="{% static 'images/fittings_sliders.jfif' %}" alt="P"><h3 class="inside-slider">Water Fittings</h3></div>
+                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/plumbing-tools-sliders.jfif' %}"
+                        alt="P"><h3 class="inside-slider">Plumbing tools</h3></div>
+                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/ice-cream-sliders.jfif' %}"
+                        alt="P"><h3 class="inside-slider ice">Ice Cream </h3></div>
+                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/boilers-sliders.jfif' %}"
+                        alt="P"><h3 class="inside-slider boilers">Boilers</h3></div>
+                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/water_pumps_sliders.jfif' %}"
+                        alt="P"><h3 class="inside-slider pumps">Water Pumps</h3></div>
+                        <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/sink_sliders.jfif' %}"
+                                alt="P"><h3 class="inside-slider">Sinks</h3></div>
+                                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/juice.jfif' %}"
+                                        alt="P"><h3 class="inside-slider fruts">Fruits and Juicy</h3></div>
+                                      
+                                        
+                                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/water_storages.jfif' %}"
+                                        alt="P"><h3 class="inside-slider storages">Water Storages</h3></div>
+                                        <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/fish_bowl_and_aquarium_sliders.jfif' %}"
+                                                alt="P"><h3 class="inside-slider">Fish Bowl and Aquarium</h3></div>
+                                                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/rain_covers_sliders.jfif' %}"
+                                                        alt="P"><h3 class="inside-slider">Rain Covers</h3></div>
+                                                        <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/Toilets-slider.jfif' %}"
+                                                                alt="P"><h3 class="inside-slider" style="color: black;">Toilets</h3></div>
+                                                                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/cleaning_machine_sliders.jfif' %}"
+                                                                        alt="P"><h3 class="inside-slider">Cleaning Machines</h3></div>
+                                                                        <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/cleaning_tools_sliders.jfif' %}"
+                                                                                alt="P"><h3 class="inside-slider">Cleaning Tools</h3></div>
+            </div>
+        </div>
+    </div>
+    <!--Sliders-->
+   <!-------------------------------------------------------------------------------------------------------------------------------------End of drop down select-->
+    <main >
+        <section class="body-section">
+
+            <div class="all-products">
+                <!----------------------------------------------------------------------------------------------Choosing categorise from database-->
+                {%for category in categories%}
+                <section class="main-products cooler">
+                    <div class="upper-bar">
+                        <div>
+                            <h2>{{category.name}}</h2>
+                        </div>
+                      <!--  <div class="sortby">
+                            <span>Sort By: <select class="sort">
+                                    <option value="highest">Highest Price</option>
+                                    <option value="lowest">Lowest Price</option>
+                                </select></span>
+                        </div>-->
+                    </div>
+
+                    <hr />
+
+                    <!--======Products-wraps-->
+                    <div class="specific-product-wrap specific-product-wrap-cooler">
+                    
+                    {% for product in category.product_set.all %}
+                        <a href="{%url 'product' product.pk%}">
+
+<div class="specific-single-product">
+    <div class="product-image center">
+        <img class="product-image-shape" src="{{product.image.url}}" alt="adamol Distilled" />
+    </div>
+    <div class="produc-descriptions">
+        <h4 class="specific-product-title">{{product.title}}</h4>
+        <p class="one-line-description"></p>
+        <div class="price">Ksh.{{product.price}}</div></a>
+        <button data-product="{{product.id}}" data-action="add" class="AddToCart update-cart" id="addToCart update-cart">Add To
+            Cart</button>
+    </div>
+</div>`
+
+                    {% empty %}
+                        <p>No Product Lol</p>
+                      
+{%endfor%}
+                    </div>
+                </section><br />
+                {%endfor%}
+<!--------------------------------------------------------------------------------End of Products-->
+                
+<!--------------------------------------------------------------------------------------Pagination-->
+{%if categories.has_other_pages%}
+
+{% if categories.has_previous %}
+<a class="btn btn-light mb-4 btn-lg" href="?page=1">First</a>
+<a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.previous_page_number }}">Previous</a>
+{% endif %}
+{% if categories.has_next %}
+<a class="btn btn-light mb-4 btn-lg" href="?page={{categories.next_page_number}}">Next</a>
+<a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.paginator.num_pages }}">Last</a>
+{% endif %}
+
+
+{% endif %}
+<!-----------------------------------------------------------------------------------------End of Pagination-->
+    </main> 
+</section>       
+            {%endblock content %}
+
+            <!--
+                    <main class="center">
+        <li>
+            <select name="latest" class="filters">
+                <option value="all">All</option>
+                <option value="coolers">Water_coolers</option>
+                <option value="plumbing">Plumbing tools</option>
+                <option value="cleaning">Cleaning tools</option>
+                <option value="pumps">Water_pumps</option>
+                <option value="fitting">Water fittings</option>
+                <option value="toilets">Toilets</option>
+                <option value="purifiers">Water_Purifiers</option>
+                <option value="floodlights">Floodlights</option>
+                <option value="fish">Fish_Aquarium</option>
+                <option value="icecream">Ice</option>
+                <option value="rain">Rain_protectors</option>
+                <option value="proofs">Water_Proofs</option>
+                <option value="structures">Water_Structures</option>
+                <option value="fruits">Fruits</option>
+                <option value="pipe">Pipes</option>
+        
+            </select>
+        
+        </li>
+    </main>
+            -->

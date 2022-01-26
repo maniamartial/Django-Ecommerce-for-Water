@@ -1,0 +1,22 @@
+{%extends 'products/base.html'%}
+{%block content%}
+
+
+<div class="row center" style="min-height: 600px;">
+    <div class="col-md-6">
+        <div class="card card-body">
+                    <p style="font-size: 24px; color: black;">Are you sure you want to delete Oder number '{{item}}'</p>
+                    <form action="" method="POST">
+                        {%csrf_token%}
+
+                        <a href="#" class="btn btn-warning">Cancel</a>
+                        <input class="btn btn-danger" type="submit" value='Confirm' name='Submit'>
+                    </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{%endblock content%}

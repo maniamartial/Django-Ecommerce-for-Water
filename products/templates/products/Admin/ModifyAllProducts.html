@@ -1,0 +1,81 @@
+{%extends 'products/base.html'%}
+{%block content%}
+<section class="main-section" style="background-image: url(images/waterrocks.jfif)">
+    <!-----------------------------------------------------------------------------------------------------Drop down menu to select items-->
+
+    <!-------------------------------------------------------------------------------------------------------------------------------------End of drop down select-->
+    <main>
+        <section class="body-section">
+
+            <div class="all-products">
+                <!----------------------------------------------------------------------------------------------Choosing categorise from database-->
+                <section class="main-products cooler">
+          
+<hr>
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <!--==============--->
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+    <a class="btn btn-lg btn-outline-info" id="read-button" href="{% url 'addCategory'%}">Add Category / Sub-Category</a>
+    </div>
+<!--=================-->
+<div class="btn-group" role="group" aria-label="Third group">
+    <a class="btn btn-lg btn-outline-info" id="read-button" href="{% url 'addBrand'%}">Add Brand</a>
+</div>
+<!--=================-->
+    <div class="btn-group" role="group" aria-label="Third group">
+        <a class="btn btn-lg btn-outline-info" id="read-button" href="{% url 'addProduct'%}">Add Product</a>
+    </div>
+</div>
+<style>
+    .btn-outline-info{
+        padding-bottom: 20px;
+    }
+</style>
+<hr />
+                    <!-------------------------------------------------------------------------------------------------------Products-wraps-->
+                    <div class="specific-product-wrap specific-product-wrap-cooler">
+
+                        {% for product in allproducts %}
+                        <a href="{%url 'modifySingleProduct' product.pk%}">
+                            <div class="specific-single-product">
+                                <div class="product-image center">
+                                    <img class="product-image-shape" src="{{product.image.url}}"
+                                        alt="adamol Distilled" />
+                                </div>
+                                <div class="produc-descriptions">
+                                    <h4 class="specific-product-title">{{product.title}}</h4>
+                                    <p class="one-line-description"></p>
+                                    <p class="price">Ksh.{{product.price}}</p>
+                        </a>
+                    <a class="btn btn-lg btn-primary" id="read-button" href="{% url 'modifySingleProduct' product.pk%}">Details</a>
+                    </div>
+            </div>`
+
+            {% empty %}
+            <p>No Product Lol</p>
+
+            {%endfor%}
+            </div>
+        </section><br />
+
+        <!--------------------------------------------------------------------------------End of Products-->
+
+        <!--------------------------------------------------------------------------------------Pagination-->
+        {%if categories.has_other_pages%}
+
+        {% if categories.has_previous %}
+        <a class="btn btn-light mb-4 btn-lg" href="?page=1">First</a>
+        <a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.previous_page_number }}">Previous</a>
+        {% endif %}
+        {% if categories.has_next %}
+        <a class="btn btn-light mb-4 btn-lg" href="?page={{categories.next_page_number}}">Next</a>
+        <a class="btn btn-light mb-4 btn-lg" href="?page={{ categories.paginator.num_pages }}">Last</a>
+        {% endif %}
+
+
+        {% endif %}
+        <!-----------------------------------------------------------------------------------------End of Pagination-->
+    </main>
+</section>
+{%endblock content %}

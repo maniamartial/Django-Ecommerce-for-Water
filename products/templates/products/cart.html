@@ -1,0 +1,105 @@
+
+{% extends 'products/base.html' %}
+{% block content %}
+{%load static%}
+<style>
+    .container{
+        background-color: white;
+    }
+</style>
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr >
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Available</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody class="cartItems">
+                        {%for item in items%}
+                        <tr class="cart-items">
+                            <td><img src="{{item.product.image.url}}" height="100px" width="100px"/> </td>
+                            <td class="title">{{item.product.title}}</td>
+                            <td>In stock</td>
+                            <td><div class="quantity-images">
+                                <div class="quantity">{{item.quantity}}</div>
+                                <div class="quantity-updates">
+                                  
+  <img data-product={{item.product.id}} data-action="add" class="chg-quantity update-cart" src="{% static 'images/arrow_up.jpg' %}" alt="P">
+                                  <br/>
+  <img data-product={{item.product.id}} data-action="remove" class="chg-quantity update-cart"
+                                        src="{% static 'images/arrow_down.jpg' %}" alt="P">
+                                </div></div>
+                            </td>
+  
+                            <td class="text-right">Ksh.{{item.product.price}}</td>
+                            <td class="text-right"><button class="btn btn-sm btn-danger chg-quantity update-cart"  id="danger-buttons" data-product={{item.product.id}} data-action="remove-completely"><i class="fa fa-trash"></i>
+                                </button> </td>
+                        </tr>
+                        {%endfor%}
+                        
+                        <tr >
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Items</td>
+                            <td class="text-right">{{order.get_cart_items}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Shipping</td>
+                            <td class="text-right">Ksh.0.00</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td class="text-right"><strong>Ksh.{{order.get_cart_totals}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a class="btn btn-block continue-shopping" style="background-color: rgb(128, 208, 235);" href="{%url 'waters' %}">Continue Shopping</a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                      
+                    <a class="btn btn-lg btn-block btn-success text-uppercas continue-shopping" href="{%url 'checkout'%}">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    .continue-shopping{
+        margin-bottom: 5px;
+    }
+</style>
+
+                <script>
+                    
+            
+                </script>
+  
+<!-- Footer --
+                              <td><input class="form-control cart-quantity-input" type="text" value="{{item.quantity}}" /></td>>
+{% endblock content %}
+

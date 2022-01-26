@@ -1,0 +1,81 @@
+{% extends 'products/base.html' %} {% block content %} {%load static%}
+
+
+<div class="btn-toolbar containers center news" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group first-btn " role="group" aria-label="First group">
+        <a type="button" href="{% url 'welfare'%}" class="btn btn-info">Welfare</a>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Second group">
+        <a type="button" href="{% url 'local'%}" class="btn btn-info button">Local News</a>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Third group">
+        <a type="button" href="{% url 'international'%}" class="btn btn-info button">International
+            News</a>
+    </div>
+
+
+</div>
+<hr>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {% if messages%}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">{{message}}</div>
+            {%endfor%}
+            {% endif %}
+            <!--Main position for content-->
+            <div class="container news-place" style="background-color: white;">
+                <div class="sub-topic">
+                    <h3 class="sub-topic-head">UN's Progress on achieving SGD in the World</h3>
+                    <p>Point one<br>Prob 2<br>Prob 3
+                        <br>
+                        Point 4<br>
+                        Point 5<br>
+                        Point 7<br>
+                    </p>
+                </div>
+                <br>
+
+                <!--Second subtopi-->
+                <div class="sub-topic">
+                    <h3 class="sub-topic-head">Uwa Each Document</h3>
+                    <p>Point one<br>Prob 2<br>Prob 3
+                        <br>
+                        Point 4<br>
+                        Point 5<br>
+                        Point 7<br>
+                    </p>
+                </div>
+
+                <!--Third subtopic-->
+                <div class="sub-topic">
+                    <h3 class="sub-topic-head">Water reserves for desert are being built</h3>
+                    <p>Point one<br>Prob 2<br>Prob 3
+                        <br>
+                        Point 4<br>
+                        Point 5<br>
+                        Point 7<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="content-section">
+                <h3>Our Sidebar</h3>
+                <p class='text-muted'>You can put any information here you'd like.
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">Latest Posts</li>
+                    <li class="list-group-item list-group-item-light">Announcements</li>
+                    <li class="list-group-item list-group-item-light">Calendars</li>
+                    <li class="list-group-item list-group-item-light">etc</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+{%endblock%}

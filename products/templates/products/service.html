@@ -1,0 +1,287 @@
+{% extends 'products/base.html' %} {% block content %} {%load static%}
+<section class="main-section">
+  <!--Sliders-->
+  <div id="slider" class="slider">
+    <div class="slider-content">
+      <div class="slider-content-wrapper">
+        <div class="slider-content__item image-1">
+          <img
+            class="slider-image"
+            src="{% static 'images/service3.jfif' %}"
+            alt="P"
+          />
+          <h3 class="inside-slider" style="color: black">Cleaning Services</h3>
+        </div>
+        <div class="slider-content__item image-2">
+          <img
+            class="slider-image"
+            src="{% static 'images/service14.jfif' %}"
+            alt="P"
+          />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+        <div class="slider-content__item image-2">
+          <img
+            class="slider-image"
+           src="{% static 'images/service1.jfif' %}"
+            alt="P"
+          />
+          <h3 class="inside-slider" style="color: black">House Maids</h3>
+        </div>
+        <div class="slider-content__item image-2">
+          <img
+            class="slider-image"
+           src="{% static 'images/service4.jfif' %}"
+            alt="P"
+          />
+          <h3 class="inside-slider" style="color: black">Construction Service</h3>
+        </div>
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service5.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service6.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service7.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service8.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service9.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service10.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service11.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service12.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+
+        <div class="slider-content__item image-2">
+          <img class="slider-image" src="{% static 'images/service13.jfif' %}" alt="P" />
+          <h3 class="inside-slider" style="color: black">Plumbing Services</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="btn-toolbar containers center"
+    role="toolbar"
+    aria-label="Toolbar with button groups"
+  >
+    <div class="btn-group first-btn" role="group" aria-label="First group">
+      <button type="button" class="btn btn-primary" id="househelp-btn">
+        HouseHelps
+      </button>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Second group">
+      <a type="button" id="cleaning-btn" class="btn btn-primary button"
+        >Cleaning</a
+      >
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Third group">
+      <a type="button" id="plumbing-btn" class="btn btn-primary button"
+        >Plumbing</a
+      >
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Fourth group">
+      <a type="button" id="construction-btn" class="btn btn-primary button"
+        >Construction</a
+      >
+    </div>
+  </div>
+  <hr />
+
+  <!--househelp form-->
+  <div class="househelp forms container" id="househelp-form">
+    <form id="contact" action="" method="post">
+      {%csrf_token%}
+      <h3>Fill in your HouseHelp</h3>
+      <h4>Contact us for custom quote</h4>
+    <div>Confirm the service </div>
+    <fieldset>{{form.title}}</fieldset>
+      <div>Location</div>
+      <fieldset>{{form.location}}</fieldset>
+      <div>Number of househelps</div>
+      <fieldset>{{form.number}}</fieldset>
+<div>Describe your work</div>
+      <fieldset>{{form.description}}</fieldset>
+<div>Estimated Fee</div>
+      <fieldset>{{form.fee}}</fieldset>
+      <fieldset>
+        <button
+          name="house-help"
+          type="submit"
+          id="contact-submit"
+          data-submit="...Sending"
+        >
+          Submit
+        </button>
+      </fieldset>
+    </form>
+  </div>
+  <!----------------------------------------------------------------------------------------------->
+
+  <!--Cleaning form-->
+  <div class="cleaning forms container" id="cleaning-form">
+    <form id="contact" action="" method="post">
+    {%csrf_token%}
+      <h3>Fill in your Cleaning</h3>
+      <h4>Contact us for custom quote</h4>
+    <div>Confirm the service </div>
+    <fieldset>{{cl_form.title}}</fieldset>
+      <fieldset>
+    <div>Location</div>
+    <fieldset>{{cl_form.location}}</fieldset>
+        <div>Describe your work</div>
+        <fieldset>{{cl_form.description}}</fieldset>
+      </fieldset>
+    <div>Time of cleaning</div>
+    <fieldset>{{cl_form.time}}</fieldset>
+
+    <div>Number of items to be Cleaned</div>
+    <fieldset>{{cl_form.number}}</fieldset>
+      
+    <div>Estimated Fee</div>
+    <fieldset>{{cl_form.fee}}</fieldset>
+      <fieldset>
+        <button
+          name="clean"
+          type="submit"
+          id="contact-submit"
+          data-submit="...Sending"
+        >
+          Submit
+        </button>
+      </fieldset>
+    </form>
+  </div>
+  <!----------------------------------->
+
+  <!--plumbing-->
+  <div class="plumbing forms container" id="plumbing-form">
+    <form id="contact" action="" method="post">
+  {%csrf_token%}
+      <h3>Fill in your Plumbing</h3>
+      <h4>Contact us for custom quote</h4>
+        <div>Confirm the service </div>
+        <fieldset>{{p_form.title}}</fieldset>
+      <fieldset>
+            <div>Location</div>
+            <fieldset>{{p_form.location}}</fieldset>
+    <div>Describe your Problem</div>
+    <fieldset>{{p_form.description}}</fieldset>
+      </fieldset>
+        <div>Time frame</div>
+        <fieldset>{{p_form.time}}</fieldset>
+ 
+    <div>Estimated Fee</div>
+    <fieldset>{{p_form.fee}}</fieldset>
+      <fieldset>
+        <button
+          name="plumb"
+          type="submit"
+          id="contact-submit"
+          data-submit="...Sending"
+        >
+          Submit
+        </button>
+      </fieldset>
+    </form>
+  </div>
+
+  <!--Construction form-->
+  <div class="construction forms container" id="construction-form">
+    <form id="contact" action="" method="post">
+  {%csrf_token%}
+      <h3>Fill in your Construction Form</h3>
+      <h4>Contact us for custom quote</h4>
+        <div>Confirm the service </div>
+        <fieldset>{{c_form.title}}</fieldset>
+            <div>Location</div>
+            <fieldset>{{c_form.location}}</fieldset>
+      <select class="select-service">
+        <option>Pool</option>
+        <option>Pond</option>
+        <option>Borehole</option>
+        <option>Drill</option>
+      </select>
+     
+        <div>Specify the construction service</div>
+        <fieldset>{{c_form.specification_service}}</fieldset>
+    <div>Size</div>
+    <fieldset>{{c_form.size}}</fieldset>
+    
+      <div>Number</div>
+      <fieldset>{{c_form.number}}</fieldset>
+<div>Time frame</div>
+<fieldset>{{c_form.time}}</fieldset>
+
+
+    <div>Estimated Fee</div>
+    <fieldset>{{c_form.fee}}</fieldset>
+      <fieldset>
+        <button
+          name="construct"
+          type="submit"
+          id="contact-submit"
+          data-submit="...Sending"
+        >
+          Submit
+        </button>
+      </fieldset>
+    </form>
+  </div>
+  <!----------------------------------->
+<script>
+
+    var form_fields = document.getElementsByTagName("input");
+
+    form_fields[1].placeholder = "";
+    form_fields[2].placeholder = "";
+    form_fields[3].placeholder = "i.e Househelp";
+      form_fields[8].placeholder = "i.e Cleaning";
+        form_fields[10].placeholder = "e.g Today, 11:00 am";
+        form_fields[14].placeholder = "i.e Plumbing";
+          form_fields[16].placeholder = "e.g 3 Months";
+          form_fields[19].placeholder = "i.e Construction";
+            form_fields[21].placeholder = "e.g Pond";
+              form_fields[22].placeholder = "e.g 100 by 200";
+                form_fields[24].placeholder = "e.g 4 months";
+                
+    //form_fields[4].placeholder = "Number of househelps";
+    //form_fields[5].placeholder = "describe your work..";
+    //form_fields[6].placeholder = "Estimation fee.";
+
+    for (var field in form_fields) {
+        form_fields[field].className += "form-control";
+    }
+
+</script>
+</section>
+
+{%endblock%}

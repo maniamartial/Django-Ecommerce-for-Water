@@ -1,0 +1,173 @@
+{% extends 'products/base.html' %}
+{% block content %}
+{%load static%}
+<section class="main-section">
+
+    <!--Sliders-->
+    <div id="slider" class="slider">
+        <div class="slider-content">
+            <div class="slider-content-wrapper">
+                <div class="slider-content__item image-1"><img class="slider-image"
+                        src="{% static 'images/distilled_water_sliders.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">Cleaning Services</h3>
+                </div>
+                <div class="slider-content__item image-2"><img class="slider-image"
+                        src="{% static 'images/borehole_water_sliders.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">Plumbing Services</h3>
+                </div>
+                <div class="slider-content__item image-2"><img class="slider-image"
+                        src="{% static 'images/clearwater.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">House Maids</h3>
+                </div>
+                <div class="slider-content__item image-2"><img class="slider-image"
+                        src="{% static 'images/purified_sliders.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">Purified Water</h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-toolbar containers center" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group first-btn " role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary" id='househelp-btn'>Favourite</button>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Second group">
+            <a type="button" id="cleaning-btn" class="btn btn-primary button">Recents</a>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Third group">
+            <a type="button" id="plumbing-btn" class="btn btn-primary button">Water Trackers</a>
+        </div>
+
+    </div>
+    <hr>
+   
+   <!-------------------------------------------------------------------------------------------------------Favourites-wraps-->
+                    <div class="favourite-form househelp specific-product-wrap specific-product-wrap-cooler" id="househelp-form">
+
+                        {% for product in products %}
+                                           <a href="{%url 'product' product.pk%}">
+<div class="specific-single-product">
+    <div class="product-image center">
+        <img class="product-image-shape" src="{{product.image.url}}" alt="adamol Distilled" />
+    </div>
+    <div class="produc-descriptions">
+        <h4 class="specific-product-title">{{product.title}}</h4>
+        <p class="one-line-description"></p>
+        <div class="price">Ksh.{{product.price}}</div></a>
+        <button data-product="{{product.id}}" data-action="add" class="AddToCart update-cart" id="addToCart update-cart">Add To
+            Cart</button>
+    </div>
+            </div>`
+
+            {% empty %}
+            <p>No Product Lol</p>
+
+            {%endfor%}
+            </div>
+
+               <!-------------------------------------------------------------------------------------------------------Recents-wraps-->
+                    <div class="recent-form cleaning specific-product-wrap specific-product-wrap-cooler" id="cleaning-form">
+
+                        {% for product in products %}
+                                           <a href="{%url 'product' product.pk%}">
+<div class="specific-single-product">
+    <div class="product-image center">
+        <img class="product-image-shape" src="{{product.image.url}}" alt="adamol Distilled" />
+    </div>
+    <div class="produc-descriptions">
+        <h4 class="specific-product-title">{{product.title}}</h4>
+        <p class="one-line-description"></p>
+        <div class="price">Ksh.{{product.price}}</div></a>
+        <button data-product="{{product.id}}" data-action="add" class="AddToCart update-cart" id="addToCart update-cart">Add To
+            Cart</button>
+    </div>
+            </div>`
+
+            {% empty %}
+            <p>No Product Lol</p>
+
+            {%endfor%}
+            </div>
+
+    <!--Personal form-->
+    <div class="tracker-form plumbing forms container" id='plumbing-form'>
+        <form id="contact" action="" method="post">
+            <h3>Lett us give you an estimation</h3>
+         
+            <fieldset>
+                <input placeholder="Age" type="text" tabindex="1" required autofocus>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Weight" type="tel" tabindex="3" required>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Height" class="height" type="number" tabindex="3" required>
+            </fieldset>
+
+            <select class="select gender-select">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Others</option>
+            </select>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Get Prediction</button>
+            </fieldset>
+        </form>
+        <div class="container anser" id='predicted-answer'></div>
+
+    </div>
+    <!----------------------------------->
+    <div class="construct" id='construction-form'></div>
+    <style>
+      
+    
+    </style>
+
+    <!---->
+</section>
+<script>
+//document.getElementById('recent-btn').addEventListener('click', function(){
+  //  alert('vhjvscjhdv')
+//})
+    let favourite_btn=document.getElementById('favourite-btn')
+    let recent_btn=document.getElementById('recent-btn')
+    let tracker_btn=document.getElementById('tracker-btn')
+
+    let h_recent=document.querySelector('recent-form')
+    let h_favour=document.querySelector('favourite-form');
+    let h_tracker=document.querySelector('tracker-form');
+
+        function hidemywater() {
+
+            h_recent.style.display = "none";
+
+            h_favour.style.display = "none";
+            h_tracker.style.display = "none";
+        }
+    
+     
+            recent_btn.addEventListener('click', function() {
+                alert('Umeharibu vybe')
+                hidemywater()
+                h_recent.style.display = "block";
+            })
+
+            tracker_btn.addEventListener('click', function () {
+                hidemywater()
+                h_tracker.style.display = "block";
+            })
+
+            favourite_btn.addEventListener('click', function () {
+                hidemywater()
+                h_tracker.style.display = "block";
+            })
+    
+
+    </script>
+
+{%endblock%}

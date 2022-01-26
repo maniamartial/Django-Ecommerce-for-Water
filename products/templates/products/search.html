@@ -1,0 +1,103 @@
+{%extends 'products/base.html'%}
+{%block content%}
+<section class="main-section search">
+   
+    <main style="background-image: url(images/waterrocks.jfif)">
+        <section class="body-section">
+{% if search %}
+            <div class="all-products">
+                <h5 class="alert" style="color: white;">Search result for {{search}}</h5>
+              
+                <!-----------------------------------------------------------------------------------------------Display the products -->
+                {%if categories%}
+                {%for category in categories%}
+                
+                <section class="main-products cooler">
+                    <div class="upper-bar">
+                        <div>
+                            <h2>{{category.name}}</h2>
+                        </div>
+                       
+                    </div>
+
+                    <hr />
+
+                    <!-------------------------------------------------------------------------------------------- Products-wrap-->
+                    <div class="specific-product-wrap specific-product-wrap-cooler">
+
+                        {% for product in category.product_set.all %}
+                        <a href="{%url 'product' product.pk%}">
+                            <div class="specific-single-product">
+                                <div class="product-image center">
+                                    <img class="product-image-shape" src="{{product.image.url}}"
+                                        alt="adamol Distilled" />
+                                </div>
+                                <div class="produc-descriptions">
+                                    <h4 class="specific-product-title">{{product.title}}</h4>
+                                    <p class="one-line-description"></p>
+                                    <div class="price">Ksh.{{product.price}}</div></a>
+                                <button data-product="{{product.id}}" data-action="add" class="AddToCart update-cart" id="addToCart update-cart">Add To
+                                    Cart</button>
+                                </div>
+                            </div>`
+                   
+                        {% empty %}
+                        <p>No Product Lol</p>
+
+                        {%endfor%}
+                    </div>
+                </section>
+                {%endfor%}
+
+
+                <!--------------------------------------------End of showing products-->
+
+                <!---------------------------------------------------------------------------------------------Search products-->
+               
+                {%else%}
+                <!--Single Products-wrap if the category doesn't exist-->
+                <div class="specific-product-wrap specific-product-wrap-cooler">
+                
+                    {% for product in product %}
+                    <a href="{%url 'product' product.pk%}">
+                        <div class="specific-single-product">
+                            <div class="product-image center">
+                                <img class="product-image-shape" src="{{product.image.url}}" alt="adamol Distilled" />
+                            </div>
+                            <div class="produc-descriptions">
+                                <h4 class="specific-product-title">{{product.title}}</h4>
+                                <p class="one-line-description"></p>
+                                <p class="price">Ksh.{{product.price}}</p>
+                    </a>
+                    <button type="button" class="AddToCart">Add To Cart</button>
+                </div>
+                </div>`
+                {%endfor%}
+                {%endif%}
+                <!--End-->
+                <br />
+
+                {%else%}
+                <h5 class="text-muted">Hey {{user.username}}, You forgot to search for a product </h5>
+                {%endif%}
+                <!---------------------------------------------------------------------------------------------End of displaying products-->
+                <br />
+
+                <!----------------------------------------------------------------------------------------------Pagination-->
+                {%if categories.has_other_pages%}
+
+                {% if categories.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ categories.previous_page_number }}">Previous</a>
+                {% endif %}
+                {% if categories.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{categories.next_page_number}}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ categories.paginator.num_pages }}">Last</a>
+                {% endif %}
+
+
+                {% endif %}
+                <!-----------------------------------------------------------------------------------------------------------End of Pagination-->
+    </main>
+</section>
+                {%endblock content %}

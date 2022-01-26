@@ -1,0 +1,185 @@
+{% extends 'products/base.html' %}
+{% block content %}
+{%load static%}
+<section class="main-section">
+
+    <!--Sliders-->
+    <div id="slider" class="slider">
+        <div class="slider-content">
+            <div class="slider-content-wrapper">
+                <div class="slider-content__item image-1"><img class="slider-image"
+                        src="{% static 'images/distilled_water_sliders.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">The Competition</h3>
+                </div>
+                <div class="slider-content__item image-2"><img class="slider-image"
+                        src="{% static 'images/borehole_water_sliders.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">Water WallPapers</h3>
+                </div>
+                <div class="slider-content__item image-2"><img class="slider-image"
+                        src="{% static 'images/clearwater.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">Ring Water Game</h3>
+                </div>
+                <div class="slider-content__item image-2"><img class="slider-image"
+                        src="{% static 'images/purified_sliders.jfif' %}" alt="P">
+                    <h3 class="inside-slider" style="color: black;">Water Facts</h3>
+                </div>
+
+                <div class="slider-content__item image-2"><img class="slider-image" src="{% static 'images/purified_sliders.jfif' %}"
+                        alt="P">
+                    <h3 class="inside-slider" style="color: black;">Welfare Welfare News</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-toolbar containers center" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group first-btn " role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary" id='househelp-btn'>Competition</button>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Second group">
+            <a type="button" id="cleaning-btn" class="btn btn-primary button">WallPapers</a>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Third group">
+            <a type="button" id="plumbing-btn" class="btn btn-primary button">RingWater Game</a>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Fourth group">
+            <a type="button" id="construction-btn" class="btn btn-primary button">Water facts</a>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Fourth group">
+            <a type="button" href="{%url 'welfare'%}" id="construction-btn" class="btn btn-primary button">Welfare and News</a>
+        </div>
+    </div>
+    <hr>
+
+    <!--house_help form-->
+    <div class="househelp forms container" id='househelp-form'>
+        <form id="contact" action="" method="post">
+            {%csrf_token%}
+            <h3>Fill in your HouseHelp</h3>
+            <h4>Contact us for custom quote</h4>
+            <fieldset>
+                <input placeholder="Full Name" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Id Number (optional)" type="text" tabindex="2" required>
+            </fieldset>
+
+
+                <fieldset>
+                    <input placeholder="Email Address" type="email" tabindex="2" required>
+                </fieldset>
+
+            <fieldset>
+                <input placeholder="Phone Number" class="height" type="number" tabindex="3" required>
+            </fieldset>
+<fieldset>
+             <select class="select gender-select">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Others</option>
+            </select>
+</fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+    <!----------------------------------->
+
+    <!--Plumbing form-->
+    <div class="cleaning forms container" id='cleaning-form'>
+        <form id="contact" action="" method="post">
+            <h3>Fill in your Cleaning</h3>
+            <h4>Contact us for custom quote</h4>
+            <fieldset>
+                <textarea placeholder="Description of your cleaning task here...." tabindex="5" required></textarea>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Time to be cleaned" type="text" tabindex="1" required autofocus>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Number of items" type="tel" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Location" type="text" tabindex="2" required>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Fee" type="number" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+    <!----------------------------------->
+
+    <!--plumbing-->
+    <div class="plumbing forms container" id='plumbing-form'>
+        <form id="contact" action="" method="post">
+            <h3>Fill in your Plumbing</h3>
+            <h4>Contact us for custom quote</h4>
+            <fieldset>
+                <textarea placeholder="Description of your cleaning task here...." tabindex="5" required></textarea>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Time to be cleaned" type="text" tabindex="1" required autofocus>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Number of items" type="tel" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Location" type="text" tabindex="2" required>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Fee" type="number" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <!--Construction form-->
+    <div class="construction forms container" id='construction-form'>
+        <form id="contact" action="" method="post">
+            <h3>Fill in your Construction Form</h3>
+            <h4>Contact us for custom quote</h4>
+            <select class="select">
+                <option>Pool</option>
+                <option>Pond</option>
+                <option>Borehole</option>
+                <option>Drill</option>
+            </select>
+            <fieldset>
+                <textarea placeholder="Description of your problem...." tabindex="5" required></textarea>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Time Frame" type="text" tabindex="1" required autofocus>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Size" type="tel" tabindex="3" required>
+            </fieldset>
+
+            <fieldset>
+                <input placeholder="Fee" type="number" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+    <!----------------------------------->
+    
+    <!---->
+</section>
+
+{%endblock%}

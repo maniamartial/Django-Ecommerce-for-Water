@@ -1,0 +1,221 @@
+{%extends 'products/base.html'%}
+{%block content%}
+<!--Section: Block Content-->
+<section class="checkout">
+
+    <!--Grid row-->
+    <div class="row">
+
+        <!--Grid column-->
+       
+        <div class="col-lg-8 mb-4">
+<form id="form">
+            <!-- Card -->
+            <div class="card wish-list pb-1">
+                <div class="card-body">
+
+                    <h5 class="mb-2">Billing details</h5>
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-6">
+
+                            <!-- First name -->
+                            <div class="md-form md-outline mb-0 mb-lg-4">
+                                <input type="text" id="firstName" class="form-control mb-0 mb-lg-2" name="firstname">
+                                <label for="firstName">First name</label>
+                            </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-lg-6">
+
+                            <!-- Last name -->
+                            <div class="md-form md-outline">
+                                <input type="text" id="lastName" class="form-control" name="lastname">
+                                <label for="lastName">Last name</label>
+                            </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+
+                    <!--Change-->
+                        <div class="row">
+                        
+                            <!-- Grid column -->
+                            <div class="col-lg-6">
+                        
+                                <!-- First name -->
+                                <div class="md-form md-outline mt-0">
+                                    <input type="text" id="form14" placeholder="House number and street name" class="form-control" name="address">
+                                    <label for="form14">Address</label>
+                                </div>
+                        
+                            </div>
+                            <!-- Grid column -->
+                        
+                            <!-- Grid column -->
+                            <div class="col-lg-6">
+                        
+                                <!-- Last name -->
+                                <div class="md-form md-outline">
+                                    <input type="text" id="form17" class="form-control" name="city">
+                                    <label for="form17">Estate</label>
+                                </div>
+                        
+                          
+                            <!-- Grid column -->
+                        
+                        </div>
+                        </div>
+                    <!-- Grid row -->
+                  <div class="">
+                            <!-- Additional information -->
+                    <div class="md-form md-outline">
+                        <textarea id="form76" class="md-textarea form-control" rows="4" name="zipcode"></textarea>
+                        <label for="form76">Additional information</label>
+                    </div>
+</div>
+                   
+
+                </div>
+            </div>
+            <!-- Card -->
+</form>
+        </div>
+    
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4">
+
+            <!-- Card -->
+            <div class="card mb-4">
+                <div class="card-body">
+<a type="button" class="btn btn-outline waves-light" href="{%url 'cart' %}" style="background-color: lightblue;">&laquo; Back To Cart<a>
+                    <h5 class="mb-3">The total amount of</h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                            Temporary amount
+                            <span>Ksh. {{order.get_cart_totals}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                            Shipping
+                            <span>Ksh.0</span>
+                        </li>
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                            <div>
+                                <strong>The total amount of</strong>
+                                <strong>
+                                    <p class="mb-0">(including VAT)</p>
+                                </strong>
+                            </div>
+                            <span><strong>Ksh. {{order.get_cart_totals}}</strong></span>
+                        </li>
+                    </ul>
+
+                    <button type="button" class="btn btn-primary btn-block waves-effect waves-light" id="purchase">Pay On Delivery
+                        purchase</button><br>
+                        <a type="button" class="btn btn-primary btn-block waves-effect waves-light" href="{% url 'pay' %}" id="open">Pay Now</a><br>
+                        <hr>
+                       
+                </div>
+            </div>
+            <!-- Card -->
+
+            <!-- Card -->
+            <div class="card mb-4">
+                <div class="card-body">
+
+                    <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse"
+                        href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Add a discount code (optional)
+                        <span><i class="fas fa-chevron-down pt-1"></i></span>
+                    </a>
+
+                    <div class="collapse" id="collapseExample">
+                        <div class="mt-3">
+                            <div class="md-form md-outline mb-0">
+                                <input type="text" id="discount-code" class="form-control font-weight-light"
+                                    placeholder="Enter discount code">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+</section>
+
+<!--Paypal Integration-->
+<script src="https://www.paypal.com/sdk/js?client-id=AQl-Nqlfy6LFp8Ff2FYS7nU639LTlDmTdAwKgqOPBmfimeJj2WSIVsQIqcwTW_-n3K7G1TMaEIXgRFN6&currency=USD"></script>
+
+
+
+<script>
+  
+
+    var shipping='{{order.shipping}}'
+    var total='{{order.get_cart_totals}}'
+    let button = document.getElementById("purchase");
+    button.addEventListener('click', submitFormData)
+
+    var form=document.getElementById('form')
+   
+    function submitFormData() {
+    
+        var shippingFormData = {
+            'firstname':null,
+            'lastname':null,
+            'address': null,
+            'city': null,
+            'zipcode':null
+        }
+        if(shipping!='False'){
+             shippingFormData.firstname = form.firstname.value
+            shippingFormData.lastname = form.lastname.value
+            shippingFormData.address=form.address.value
+             shippingFormData.city = form.city.value
+              shippingFormData.zipcode = form.zipcode.value
+               
+
+        } 
+      var url="/processOrder/";
+      fetch(url, {
+          method:'POST',
+          headers:{
+              'ContentType':'application/json',
+              'X-CSRFToken': csrftoken,
+          }, 
+          body: JSON.stringify({'shipping':shippingFormData}),
+
+      })
+      .then((response) =>  {
+              return response.json()
+          })
+      .then((data) => {
+          console.log('Success:', data);
+          alert("Request has been received, Wait for response");
+          cart={}
+         window.location.href = "{%url 'waters'%} "
+      })
+    }
+
+
+</script>
+{%endblock content%}

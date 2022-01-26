@@ -1,0 +1,126 @@
+.main-products {
+  margin-top: 30px;
+  padding-left: 0px;
+  background-color: lightblue;
+}
+.upper-bar {
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+}
+.sortby {
+  width: fit-content;
+  float: right;
+  margin-left: 25%;
+  padding-top: 5px;
+}
+.sortby select {
+  border: none;
+  height: 30px;
+}
+.filters {
+  outline: none;
+  border: none;
+  background-color: lightblue;
+}
+
+.upper-bar div:first-child {
+  width: 50%;
+}
+.specific-product-wrap {
+  margin-top: -12px;
+  background-color: white;
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.specific-single-product {
+  margin-left: 10px;
+  height: 370px;
+  width: 238px;
+  margin-bottom: 20px;
+  transition-delay: 0.1s;
+  transition-duration: 0.5s;
+}
+
+.product-image-shape {
+  height: 200px;
+  width: 180px;
+}
+.produc-descriptions {
+  padding: 10px;
+}
+.price {
+  font-size: 20px;
+}
+.produc-descriptions .AddToCart {
+  width: 95%;
+  background-color: rgb(133, 209, 235);
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.specific-single-product:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 1px 2px 1px grey;
+}
+@media (max-width: 1024px) {
+  .sortby {
+    margin-left: 20%;
+  }
+}
+@media (max-width: 800px) {
+  .sortby {
+    margin-left: 15%;
+  }
+  .upper-bar h2 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+}
+@media (max-width: 550px) {
+  .upper-bar {
+    height: 30px;
+    margin-right: 5px;
+  }
+  .hide-small {
+    visibility: hidden;
+    display: none;
+  }
+  .sortby {
+    margin-left: 0%;
+  }
+}
+@media (max-width: 415px) {
+  .upper-bar div:first-child {
+    width: 100%;
+  }
+  .specific-single-product {
+    margin-left: 15px;
+    height: 250px;
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  .product-image-shape {
+    height: 150px;
+    width: 130px;
+  }
+  .produc-descriptions {
+    padding: 5px;
+  }
+}
+@media (max-width: 320px) {
+  .specific-single-product {
+    margin-left: 10px;
+    height: 250px;
+    width: 120px;
+    margin-bottom: 20px;
+  }
+}

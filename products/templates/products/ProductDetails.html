@@ -1,0 +1,155 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<main>
+    <section class="single-product-page body-section" style="background-color: red;">
+
+        <!---------------------------------------------------------------Displaying each-Product -->
+        <div class="sproduct-position">
+
+            <div class="sproduct" >
+                <a class="btn btn-back" href="{%url 'products'%}">&lt;&lt;</a>
+                <div class="center">
+                    <h4>{{eachProduct.brand}}</h4>
+                    <a href="{%url 'brands'%}">Other waters from this brand</a>
+                </div>
+                <div class="wrap-single-product-s">
+
+                    <div class="image-s">
+                        <img class="product-image-s" src="{{eachProduct.image.url}}"></img>
+                    </div>
+                    <div class="details-single">
+                        <h4 class="libhead">{{eachProduct.title}}</h4>
+                        <div>{{eachProduct.description}}</div>
+                        <div class="price" id="book-price">Ksh.{{eachProduct.price}}</div>
+                        <div class="price" id="book-price">1 Litre</div>
+                        <div class="wrap-book-buttons">
+                            
+                            <button data-product="{{eachProduct.id}}" data-action="remove" class="AddToCart update-cart"
+                                id="addToCart update-cart">Add To
+                                Cart</button>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- --------------------------------------------------------------------------------------Descripton of single product-->
+                <div class="container">
+                    <div class="more-detail-s container">
+                        <h4>Product Details</h4>
+                        <div>{{eachProduct.description}}</div>
+                    </div>
+                    <div class="rating-box">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-empty"></i>
+                    </div>
+                    <hr />
+                    <div class="specification">
+                        <h4>Specifications</h4>
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+
+                <div class="container related-products">
+                    <h4>Related Products</h4>
+                    <div class="related">
+                        <div class="related-singles">
+                        
+                            <div class="image-s">
+                                <img class="image-related" src="{{eachProduct.image.url}}"></img>
+                            </div>
+                            <div class="details-single">
+                                <h4 class="libhead">{{eachProduct.title}}</h4>
+                                <div>{{eachProduct.description}}</div>
+                                <div class="price" id="book-price">Ksh.{{eachProduct.price}}</div>
+                                <div class="price" id="book-price">1 Litre</div>
+                                <div class="wrap-book-buttons">
+                                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="related-singles">
+                        
+                            <div class="image-s">
+                                <img class="image-related" src="{{eachProduct.image.url}}"></img>
+                            </div>
+                            <div class="details-single">
+                                <h4 class="libhead">{{eachProduct.title}}</h4>
+                                <div>{{eachProduct.description}}</div>
+                                <div class="price" id="book-price">Ksh.{{eachProduct.price}}</div>
+                                <div class="price" id="book-price">1 Litre</div>
+                                <div class="wrap-book-buttons">
+                        
+                        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="related-singles">
+                
+                            <div class="image-s">
+                                <img class="image-related" src="{{eachProduct.image.url}}"></img>
+                            </div>
+                            <div class="details-single">
+                                <h4 class="libhead">{{eachProduct.title}}</h4>
+                                <div>{{eachProduct.description}}</div>
+                                <div class="price" id="book-price">Ksh.{{eachProduct.price}}</div>
+                                <div class="price" id="book-price">1 Litre</div>
+                                <div class="wrap-book-buttons">
+                
+                
+                                </div>
+                            </div>
+                        </div>
+                    <div class="related-singles">
+                    
+                        <div class="image-s">
+                            <img class="image-related" src="{{eachProduct.image.url}}"></img>
+                        </div>
+                        <div class="details-single">
+                            <h4 class="libhead">{{eachProduct.title}}</h4>
+                            <div>{{eachProduct.description}}</div>
+                            <div class="price" id="book-price">Ksh.{{eachProduct.price}}</div>
+                            <div class="price" id="book-price">1 Litre</div>
+                            <div class="wrap-book-buttons">
+                    
+                    
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            <!--Categories-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <a style="color: rgb(13, 183, 240);" href="{% url 'waters'%}">Water</a>
+        </div>
+        <div class="col-sm">
+            <a style="color: rgb(13, 183, 240);" href="{% url 'products'%}">Water Product</a>
+        </div>
+        <div class="col-sm">
+            <a style="color: rgb(13, 183, 240);" href="{% url 'service'%}">Water Services</a>
+        </div>
+    </div>
+</div>
+            <!------------------------------End of left-bar-->
+        </div>
+
+
+
+    </section>
+</main>
+<style>
+ 
+    .related {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+</style>
+
+{% endblock content %}
